@@ -1,39 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>LAN Buzzer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>LAN Buzzer</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            touch-action: manipulation;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+    </style>
 </head>
 <body>
-  <h1>LAN Buzzer</h1>
+    <div class="container participant-view">
+        <div class="header">
+            <h1>LAN Buzzer</h1>
+            <div id="statusBadge" class="status-badge status-ready">Ready</div>
+        </div>
 
-  <input id="name" placeholder="Your name" />
-  <button onclick="buzz()">BUZZ</button>
+        <div class="registration-section" id="registrationSection">
+            <input 
+                type="text" 
+                id="nameInput" 
+                placeholder="Enter your name" 
+                maxlength="20"
+                autocomplete="off"
+            >
+            <button id="registerButton" class="register-btn">Join Game</button>
+        </div>
 
-  <h2 id="result"></h2>
-  <button onclick="reset()">Reset</button>
+        <div class="game-section hidden" id="gameSection">
+            <div class="team-name-display" id="teamNameDisplay"></div>
+            <div class="buzzer-container">
+                <button id="buzzButton" class="buzz-button">BUZZ!</button>
+            </div>
+            <div id="spacebarHint" class="spacebar-hint hidden">Press <kbd>SPACE</kbd> to buzz</div>
+            <div id="result" class="result-display"></div>
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+    </div>
 
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
-    const socket = io();
-
-    function buzz() {
-      const name = document.getElementById("name").value;
-      socket.emit("buzz", name);
-    }
-
-    socket.on("winner", (name) => {
-      document.getElementById("result").innerText =
-        "Winner: " + name;
-    });
-
-    socket.on("reset", () => {
-      document.getElementById("result").innerText = "";
-    });
-
-    function reset() {
-      socket.emit("reset");
-    }
-  </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
 </body>
 </html>
-

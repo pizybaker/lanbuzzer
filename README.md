@@ -1,37 +1,44 @@
 # LAN Buzzer
 
-A real-time buzzer system for quiz competitions that works over a local area network.
+A real-time buzzer application for local network quiz games and competitions.
+
+## Quick Start
+
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Start the server:**
+   ```bash
+   npm start
+   ```
+
+3. **Access:**
+   - Participants: `http://localhost:3000` or `http://YOUR_IP:3000`
+   - Admin: `http://localhost:3000/secret69` (password: `admin123`)
 
 ## Features
 
-- Real-time buzzing using WebSocket (Socket.IO)
-- First person to buzz locks out others
-- Reset functionality for the host
-- Works across devices on the same LAN
+- Real-time buzzing with instant winner detection
+- Admin dashboard with lock/unlock controls
+- Participant tracking and winner display
+- Mobile-optimized full-screen buzzer button
+- Desktop spacebar support
+- No duplicate team names
 
 ## Setup
 
-1. Install dependencies:
-```bash
-npm install
-```
+For detailed setup instructions including network configuration, see **[SETUP.md](SETUP.md)**.
 
-2. Start the server:
-```bash
-node server.js
-```
+## Configuration
 
-3. Find your local IP address:
-   - **Mac/Linux**: `ifconfig` or `ip addr`
-   - **Windows**: `ipconfig`
+- **Change Admin Password**: Edit `server.js` line 13
+- **Change Port**: Edit `server.js` line 236 (default: 3000)
 
-4. Access the buzzer:
-   - On the host machine: `http://localhost:3000`
-   - On other devices: `http://<YOUR_IP>:3000`
+## Requirements
 
-## Usage
-
-1. Enter your name in the input field
-2. Click the "BUZZ" button to buzz in
-3. The first person to buzz will be displayed as the winner
-4. Click "Reset" to clear and start a new round
+- Node.js (v14+)
+- Express
+- Socket.IO
+- Local network/router

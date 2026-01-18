@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - LAN Buzzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loginScreen" class="login-container">
+        <div class="login-box">
+            <h1>Admin Login</h1>
+            <input type="password" id="passwordInput" placeholder="Enter admin password" autocomplete="off">
+            <button id="loginButton">Login</button>
+            <div id="loginError" class="error-message"></div>
+        </div>
+    </div>
+
+    <div id="adminDashboard" class="admin-dashboard hidden">
+        <div class="admin-header">
+            <h1>Admin Dashboard</h1>
+            <div class="header-right">
+                <div class="status-indicator">
+                    <span id="statusText" class="status-text">Status: Ready</span>
+                    <span id="statusDot" class="status-dot status-ready"></span>
+                </div>
+                <button id="logoutButton" class="logout-btn">Logout</button>
+            </div>
+        </div>
+
+        <div class="admin-controls">
+            <button id="lockButton" class="control-btn lock-btn">Lock Buzzer</button>
+            <button id="unlockButton" class="control-btn unlock-btn">Unlock Buzzer</button>
+            <button id="resetButton" class="control-btn reset-btn">Reset Game</button>
+        </div>
+
+        <div class="admin-info">
+            <div class="info-card">
+                <h3>Participants</h3>
+                <div id="participantCount" class="big-number">0</div>
+                <div id="participantList" class="participant-list"></div>
+            </div>
+
+            <div class="info-card winner-card">
+                <h3>Winner</h3>
+                <div id="winnerDisplay" class="winner-display">
+                    <div class="no-winner">No winner yet</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="debug-section">
+            <h3>Debug Log</h3>
+            <div id="debugLog" class="debug-log"></div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
