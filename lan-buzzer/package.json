@@ -1,0 +1,22 @@
+{
+  "name": "lan-buzzer",
+  "version": "1.0.0",
+  "description": "A real-time buzzer application using Socket.IO and Express.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "socket.io",
+    "express",
+    "real-time",
+    "buzzer"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.0.0"
+  }
+}

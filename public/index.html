@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LAN Buzzer</title>
+</head>
+<body>
+  <h1>LAN Buzzer</h1>
+
+  <input id="name" placeholder="Your name" />
+  <button onclick="buzz()">BUZZ</button>
+
+  <h2 id="result"></h2>
+  <button onclick="reset()">Reset</button>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    function buzz() {
+      const name = document.getElementById("name").value;
+      socket.emit("buzz", name);
+    }
+
+    socket.on("winner", (name) => {
+      document.getElementById("result").innerText =
+        "Winner: " + name;
+    });
+
+    socket.on("reset", () => {
+      document.getElementById("result").innerText = "";
+    });
+
+    function reset() {
+      socket.emit("reset");
+    }
+  </script>
+</body>
+</html>
+
